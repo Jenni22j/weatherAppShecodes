@@ -1,0 +1,75 @@
+body {
+  font-family: raleway;
+}
+
+form {
+  margin-top: 35px;
+}
+h1 {
+  font-weight: bold;
+  margin-top: 50px;
+  text-transform: capitalize;
+}
+h2 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+.currentbutton {
+  background: black;
+  border-radius: 7px;
+  color: white;
+  font-size: 15px;
+  margin-top: 20px;
+  transition: all 150ms ease-in-out;
+}
+.currentbutton:hover {
+  background: white;
+  color: black;
+}
+.dates {
+  background-color: white;
+}
+
+.mainicon {
+  font-size: 90px;
+  margin-top: 30px;
+}
+
+.searchbutton {
+  background: black;
+  border-radius: 7px;
+  color: white;
+  font-size: 15px;
+  transition: all 150ms ease-in-out;
+}
+.searchbutton:hover {
+  background: white;
+  color: black;
+}
+.weather-description {
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.todayinfo {
+  position: sticky;
+  top: 35px;
+}
+.todaytemp {
+  font-size: 42px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+.topcard {
+  margin-top: 35px;
+}
+.units {
+  font-size: 20px;
+}
+.weeklyforcast {
+  font-size: 32px;
+}
+.weeklytemps {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
