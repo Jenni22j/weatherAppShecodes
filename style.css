@@ -46,6 +46,10 @@ h2 {
   background: white;
   color: black;
 }
+.sourcecodelink {
+  font-size: 12px;
+  margin-top: 40px;
+}
 .weather-description {
   font-size: 16px;
   text-transform: capitalize;
