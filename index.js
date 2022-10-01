@@ -43,7 +43,7 @@ h2.innerHTML = `${day}, ${month} ${date}, ${year} ${hours}:${minutes}`;
 function search(city) {
   let apiKey = "70d227f3ab1426823d74bcea30aa6aeb";
 
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
 }
 function displayTemp(response) {
@@ -71,7 +71,7 @@ function searchCity(event) {
 //}
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
-search("Charleston");
+search("London");
 //degree unit change
 function changeUnitCel(event) {
   event.preventDefault();
@@ -92,7 +92,7 @@ fahrenheit.addEventListener("click", changeUnitFah);
 //geolocate current temp
 function searchLocation(position) {
   let apiKey = "70d227f3ab1426823d74bcea30aa6aeb";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
 }
 function getCurrentLocation(event) {
