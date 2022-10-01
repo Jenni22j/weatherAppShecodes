@@ -47,6 +47,7 @@ function search(city) {
   axios.get(apiUrl).then(displayTemp);
 }
 function displayTemp(response) {
+  let iconElement = document.querySelector("#mainicon");
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#todayunit").innerHTML = Math.round(
     response.data.main.temp
@@ -56,6 +57,10 @@ function displayTemp(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#windspeed").innerHTML = Math.round(
     response.data.wind.speed
+  );
+  iconElement.setAttribute(
+    "src",
+    `weathericonimages/${response.data.weather[0].icon}.png`
   );
 }
 function searchCity(event) {
