@@ -46,6 +46,30 @@ function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#weeklyforecast");
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = "";
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+<div class="card border-dark mb-3 topcard" style="max-width: 9rem">
+       <div class="card-header dates">10/03</div>
+       <div class="card-body">
+        <h5 class="card-title">${day}</h5>
+       <p class="card-text weeklyforcast">
+         <i class="fa-solid fa-sun sunicon"></i>
+        <span class="weeklytemps"> 77°</span>
+      </p>
+    </div>
+  </div>`;
+  });
+  forecastHTML = forecastHTML + "";
+  forecastElement.innerHTML = forecastHTML;
+}
+displayForecast();
 function displayTemp(response) {
   let iconElement = document.querySelector("#mainicon");
   celsiusTemp = response.data.main.temp;
