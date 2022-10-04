@@ -48,6 +48,7 @@ function search(city) {
 }
 function displayTemp(response) {
   let iconElement = document.querySelector("#mainicon");
+  celsiusTemp = response.data.main.temp;
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#todayunit").innerHTML = Math.round(
     response.data.main.temp
@@ -85,7 +86,11 @@ search("London");
 function changeUnitCel(event) {
   event.preventDefault();
   let unitTempCel = document.querySelector("#todayunit");
-  unitTempCel.innerHTML = "25";
+  fahrenheit.classList.remove("active");
+  fahrenheit.classList.add("inactive");
+  celsius.classList.add("active");
+  celsius.classList.remove("inactive");
+  unitTempCel.innerHTML = Math.round(celsiusTemp);
 }
 let celsius = document.querySelector("#celsius-link");
 celsius.addEventListener("click", changeUnitCel);
@@ -93,8 +98,14 @@ celsius.addEventListener("click", changeUnitCel);
 function changeUnitFah(event) {
   event.preventDefault();
   let unitTempFah = document.querySelector("#todayunit");
-  unitTempFah.innerHTML = "77";
+  celsius.classList.remove("active");
+  celsius.classList.add("inactive");
+  fahrenheit.classList.add("active");
+  fahrenheit.classList.remove("inactive");
+  let fahTemp = (celsiusTemp * 9) / 5 + 32;
+  unitTempFah.innerHTML = Math.round(fahTemp);
 }
+let celsiusTemp = null;
 let fahrenheit = document.querySelector("#fahrenheit-link");
 fahrenheit.addEventListener("click", changeUnitFah);
 
