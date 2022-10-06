@@ -46,25 +46,50 @@ function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
 }
-function displayForecast() {
+//weekly forecast
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#weeklyforecast");
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  //let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHTML = "";
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
 <div class="card border-dark mb-3 topcard" style="max-width: 9rem">
-       <div class="card-header dates">10/03</div>
+       <div class="card-header dates">${formatDay(forecastDay.dt)}</div>
        <div class="card-body">
-        <h5 class="card-title">${day}</h5>
+        <h5 class="card-title"><img src="weathericonimages/${
+          forecastDay.weather[0].icon
+        }.png" width="50"class="fa-solid fa-sun sunicon" id="weeklyicons"></img></h5>
        <p class="card-text weeklyforcast">
-        <img src="weathericonimages/01d.png" width="50"class="fa-solid fa-sun sunicon" id="weeklyicons"></img>
-        <span class="weeklytemps"> <span class="mintemp">50</span>°-<span class="maxtemp">70</span>°</span>
+        
+        <span class="weeklytemps"> <span class="mintemp">${Math.round(
+          forecastDay.temp.min
+        )}</span>°-<span class="maxtemp">${Math.round(
+          forecastDay.temp.max
+        )}</span>°</span>
       </p>
     </div>
   </div>`;
+    }
   });
   forecastHTML = forecastHTML + "";
   forecastElement.innerHTML = forecastHTML;
@@ -74,7 +99,7 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-
+//main temperature display
 function displayTemp(response) {
   let iconElement = document.querySelector("#mainicon");
   celsiusTemp = response.data.main.temp;
