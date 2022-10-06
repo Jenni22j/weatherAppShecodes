@@ -7,12 +7,12 @@ form {
 }
 h1 {
   font-weight: bold;
-  margin-top: 50px;
+  margin-top: 30px;
   text-transform: capitalize;
 }
 h2 {
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .active {
   color: black;
@@ -50,10 +50,12 @@ h2 {
 .dates {
   background-color: white;
 }
-
+.addweatherinfo {
+  font-weight: bold;
+}
 .mainicon {
   font-size: 90px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .otherweatherinfo {
   list-style: none;
@@ -76,17 +78,19 @@ h2 {
   margin-top: 40px;
 }
 .weather-description {
-  font-size: 20px;
+  font-size: 24px;
   text-transform: capitalize;
+  margin-bottom: 40px;
 }
 .todayinfo {
   position: sticky;
   top: 35px;
 }
 .todaytemp {
-  font-size: 42px;
+  font-size: 36px;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 .topcard {
   margin-top: 35px;
