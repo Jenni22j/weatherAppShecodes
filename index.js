@@ -60,8 +60,8 @@ function displayForecast() {
        <div class="card-body">
         <h5 class="card-title">${day}</h5>
        <p class="card-text weeklyforcast">
-         <i class="fa-solid fa-sun sunicon"></i>
-        <span class="weeklytemps"> 77°</span>
+        <img src="weathericonimages/01d.png" width="50"class="fa-solid fa-sun sunicon" id="weeklyicons"></img>
+        <span class="weeklytemps"> <span class="mintemp">50</span>°-<span class="maxtemp">70</span>°</span>
       </p>
     </div>
   </div>`;
@@ -70,7 +70,7 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(coordinates) {
-  let apiKey = "70d227f3ab1426823d74bcea30aa6aeb";
+  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
