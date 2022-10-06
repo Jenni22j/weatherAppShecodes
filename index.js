@@ -1,3 +1,4 @@
+//Displaying todays date
 let todayDate = new Date();
 let h2 = document.querySelector("h2");
 let days = [
@@ -46,6 +47,7 @@ function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
 }
+
 //weekly forecast
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -65,7 +67,7 @@ function displayForecast(response) {
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#weeklyforecast");
-  //let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
   let forecastHTML = "";
 
   forecast.forEach(function (forecastDay, index) {
@@ -99,6 +101,7 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
+
 //main temperature display
 function displayTemp(response) {
   let iconElement = document.querySelector("#mainicon");
@@ -124,19 +127,11 @@ function searchCity(event) {
   let city = document.querySelector("#search-city-input").value;
   search(city);
 }
-//let searchInput = document.querySelector("#search-text-input");
 
-//let h1 = document.querySelector("h1");
-//if (searchInput.value) {
-// h1.innerHTML = `${searchInput.value}`;
-// } else {
-//   h1.innerHTML = null;
-//   alert("Please type a city");
-// }
-//}
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 search("London");
+
 //degree unit change
 function changeUnitCel(event) {
   event.preventDefault();
